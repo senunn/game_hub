@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, GridItem, Show, useBreakpointValue } from "@chakra-ui/react";
+import Navbar from "./components/Navbar";
 
 function App() {
   const isLargeScreen = useBreakpointValue({ base: false, lg: true });
@@ -8,8 +9,8 @@ function App() {
     <Grid
       templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
     >
-      <GridItem area="nav" bg="coral">
-        Nav
+      <GridItem area="nav">
+        <Navbar/>
       </GridItem>
       <Show when={isLargeScreen} fallback={null}>
         <GridItem area="aside" bg="gold">
