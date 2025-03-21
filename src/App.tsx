@@ -9,12 +9,13 @@ function App() {
   return (
     <Grid
       templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
+      templateColumns={{base: '1fr', lg: '200px 1fr'}}
     >
       <GridItem area="nav">
         <Navbar/>
       </GridItem>
       <Show when={isLargeScreen} fallback={null}>
-        <GridItem area="aside">
+        <GridItem area="aside" paddingLeft='10px'>
           <GenreList/>
         </GridItem>
       </Show>
