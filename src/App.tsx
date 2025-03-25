@@ -20,7 +20,7 @@ function App() {
       </GridItem>
       <Show when={isLargeScreen} fallback={null}>
         <GridItem area="aside" paddingLeft='10px'>
-          <GenreList onSelectGenre={(genre) => {setSelectedGenre(genre)}}/>
+          <GenreList selectedGenre={slectedGenre} onSelectGenre={(genre) => {setSelectedGenre(genre)}}/>
         </GridItem>
       </Show>
 
