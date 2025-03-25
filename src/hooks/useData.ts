@@ -29,9 +29,10 @@ const useData = <T> (endpoint: string, requestConfig?: AxiosRequestConfig, deps?
             setError(err.message)
             setLoading(false);
           });
-    
+
         return () => abort.abort();
-      },deps ? [...deps] : []);
+      },[ ...(deps || [])]);
+
     
       return {data, error, isLoading};
 }
