@@ -4,6 +4,7 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenre";
+import PlaformListButton from "./components/PlaformList";
 
 function App() {
   const isLargeScreen = useBreakpointValue({ base: false, lg: true });
@@ -25,6 +26,7 @@ function App() {
       </Show>
 
       <GridItem area="main">
+        <PlaformListButton/>
         <GameGrid selectedGenre={slectedGenre}/>
       </GridItem>
     </Grid>
