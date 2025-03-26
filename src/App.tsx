@@ -7,11 +7,14 @@ import { Genre } from "./hooks/useGenre";
 import PlaformListButton from "./components/PlaformList";
 import { Platform } from "./hooks/useGame";
 
+export interface GameQuery{
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 function App() {
   const isLargeScreen = useBreakpointValue({ base: false, lg: true });
-
-  const [slectedGenre, setSelectedGenre] = useState<Genre | null>(null)
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
 
   return (
     <Grid
@@ -23,13 +26,13 @@ function App() {
       </GridItem>
       <Show when={isLargeScreen} fallback={null}>
         <GridItem area="aside" paddingLeft='10px'>
-          <GenreList selectedGenre={slectedGenre} onSelectGenre={(genre) => {setSelectedGenre(genre)}}/>
+          <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => {setGameQuery({...gameQuery,genre})}}/>
         </GridItem>
       </Show>
 
       <GridItem area="main">
-        <PlaformListButton onSelect={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform}/>
-        <GameGrid selectedGenre={slectedGenre} selectedPlatform={selectedPlatform}/>
+        <PlaformListButton onSelect={(platform) => setGameQuery({...gameQuery,platform})} selectedPlatform={gameQuery.platform}/>
+        <GameGrid gameQuery={gameQuery}/>
       </GridItem>
     </Grid>
   );
