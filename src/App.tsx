@@ -5,11 +5,13 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenre";
 import PlaformListButton from "./components/PlaformList";
+import { Platform } from "./hooks/useGame";
 
 function App() {
   const isLargeScreen = useBreakpointValue({ base: false, lg: true });
 
   const [slectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(null)
 
   return (
     <Grid
@@ -26,8 +28,8 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <PlaformListButton/>
-        <GameGrid selectedGenre={slectedGenre}/>
+        <PlaformListButton onSelect={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform}/>
+        <GameGrid selectedGenre={slectedGenre} selectedPlatform={selectedPlatform}/>
       </GridItem>
     </Grid>
   );
